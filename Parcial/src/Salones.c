@@ -147,7 +147,7 @@ int sal_Alta(Salon* estructura, int LARGO)
 		{
 			if(utn_getTexto(name,sizeof(name),"Ingrese el Nombre del Salon\n","\nError! Ingreso invalido\n",2)==0)
 			{
-				if(utn_getTexto(direc,sizeof(direc),"Ingrese la direccion del salon\n","\nError! Ingreso invalido\n",2)==0)
+				if(utn_getAlfanumerica(direc,sizeof(direc),"Ingrese la direccion del salon\n","\nError! Ingreso invalido\n",2)==0)
 				{
 						if(utn_getNumero(&tipo,"Sector\n1. SHOPPING\n2. LOCAL\nIngrese: ","\nError! Opcion Invalida\n",1,2,2)==0)
 					{

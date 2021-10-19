@@ -14,6 +14,7 @@ int getInt(int* pResultado);
 int utn_getTexto(char* pArray,int LARGO,char* mensaje, char* mensajeError,int reintentos);
 int utn_getNumeroFloat (float* pResultado, char* mensaje, char* mensajeError,float minimo, float maximo, int reintentos);
 int preguntarSeguir(char* pRespuesta,int reintentos,char* mensaje,char* mensajeError);
+int utn_getAlfanumerica(char* pResultado,int LEN,char* mensaje,char* mensajeError,int reintentos);
 
 #endif /* UTN_GETIN_H_ */
 

@@ -22,6 +22,7 @@ static int myGets(char* pArray, int len);
 static int esTexto(char* pArray);
 static int esNumerica(char* pArray);
 static int esRespuestaSoN(char* pArray);
+static int esAlfanumerica(char* pArray);
 
 
 /** \brief recibe por funciones una cadera o chary lo analiza si es correcto para cargarlo en una variable por puntero
@@ -82,7 +83,7 @@ int utn_getNumero(int* pResultado,char* mensaje,char* mensajeError,int minimo,in
 {
 	int retorno=-1;
 	int bufferInt;
-	char array[50];
+	char array[63];
 	if(pResultado!=NULL && mensaje!=NULL && mensajeError!=NULL )
 	{
 		do
@@ -230,7 +231,7 @@ static int esTexto(char* pArray)
 int utn_getNumeroFloat (float* pResultado, char* mensaje, char* mensajeError,float minimo, float maximo, int reintentos)
 {
 	int retorno=-1;
-	char array[51];
+	char array[63];
 	float bufferInt;
 
 	if (pResultado!=NULL && mensaje!=NULL && mensajeError!=NULL && minimo<maximo && reintentos>0)
@@ -369,3 +370,57 @@ static int esRespuestaSoN(char* pArray)
 	return retorno;
 }
 
+int utn_getAlfanumerica(char* pResultado,int LEN,char* mensaje,char* mensajeError,int reintentos)
+{
+	int retorno=-1;
+
+	char array[63];
+	if(pResultado!=NULL && mensaje!=NULL && mensajeError!=NULL && LEN>0)
+	{
+		do
+		{
+			printf("%s",mensaje);
+			fflush(stdin);
+			if(myGets(array,sizeof(array))==0)
+			{
+				if(esAlfanumerica(array)==1)
+				{
+					strcpy(pResultado,array);
+					retorno=0;
+					break;
+				}
+				else
+				{
+					printf("%s",mensajeError);
+				}
+			}
+			else
+			{
+				printf("%s",mensajeError);
+			}
+
+
+			reintentos--;
+
+		}while(reintentos>=0);
+
+	}
+	return retorno;
+}
+static int esAlfanumerica(char* pArray)
+{
+	int retorno=1;
+	int i=0;
+
+	  while(pArray[i]!='\0')
+	  {
+		  if((pArray[i]!= ' ') && (pArray[i]<'0' || pArray[i]>'9') && (pArray[i]<'a' || pArray[i]>'z') && (pArray[i]<'A' || pArray[i]>'Z') && (pArray[i]!='ñ') && (pArray[i]!='Ñ'))
+		  {
+			  retorno=-1;
+			  break;
+		  }
+		  i++;
+	  }
+
+	  return retorno;
+}

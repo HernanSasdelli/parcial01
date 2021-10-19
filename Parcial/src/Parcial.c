@@ -29,7 +29,7 @@ int main(void)
 {
 	setbuf(stdout, NULL);
 
-	Salon eSalones[CANT_SALONES]={{101,"MARDELPLATA","CONSTITUCION",2,OCUPADO},{102,"LOMASDEZAMORA","Laprida",2,OCUPADO},{103,"LANUS","Hernandariaz",1,OCUPADO}};
+	Salon eSalones[CANT_SALONES];
 	Arcade eArcades[CANT_ARCADES];
 
 	int opcion;
